@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Hotel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <?php
@@ -47,17 +49,31 @@
         ],
 
     ];
-
-    // stampa i dati degli hotel
-    
-    foreach ($hotels as $hotel) {
-        echo "<h2>" . $hotel['name'] . "</h2>";
-        echo "<p>descrizione: " . $hotel['description'] . "</p>";
-        echo "<p>parcheggio: " . ($hotel['parking'] ? 'Sì' : 'No') . "</p>";
-        echo "<p>Voto: " . $hotel['vote'] . "</p>";
-        echo "<p>Distanza dal centro: " . $hotel['distance_to_center'] . " km</p>";
-        echo "<hr>";
-    };
     ?>
+    <div class="container mt-5">
+        <h1 class="mb-4">Hotel List</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">nome</th>
+                    <th scope="col">descrizione</th>
+                    <th scope="col">parcheggio</th>
+                    <th scope="col">voto</th>
+                    <th scope="col">distanza dal centro (km)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel): ?>
+                    <tr>
+                        <td><?php echo $hotel['name']; ?></td>
+                        <td><?php echo $hotel['description']; ?></td>
+                        <td><?php echo $hotel['parking'] ? 'Yes' : 'No'; ?></td>
+                        <td><?php echo $hotel['vote']; ?></td>
+                        <td><?php echo $hotel['distance_to_center']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
